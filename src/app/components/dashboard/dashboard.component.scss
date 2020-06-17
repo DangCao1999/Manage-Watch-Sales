@@ -1,0 +1,25 @@
+.button-new-item
+{
+    margin-top: 50px;
+    margin-bottom: 10px;
+    padding-right: 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+.cardlist{
+    border-radius: 6px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,.14);
+}
+
+.cardlist-header{
+    text-align: center;;
+    color: white;
+    border-radius: 3px;
+    margin: 0 20px;
+    background-color: #4a9396;
+    margin-top: -20px;
+    box-shadow: 0 4px 20px 0 rgb(0,0,0,.14), 0 7px 10px -5px rgba(82, 113, 121, 0.4);
+}
