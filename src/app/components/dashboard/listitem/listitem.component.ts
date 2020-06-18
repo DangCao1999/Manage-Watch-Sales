@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-export interface Section {
-  name: string;
-  updated: Date;
-}
+import { WatchInfo } from 'src/app/interface/watchInfo';
+import { MaxLengthValidator } from '@angular/forms';
+
 
 @Component({
   selector: 'app-listitem',
@@ -10,33 +9,35 @@ export interface Section {
   styleUrls: ['./listitem.component.scss']
 })
 export class ListitemComponent implements OnInit {
-
-  folders: Section[] = [
-    {
-      name: 'Photos',
-      updated: new Date('1/1/16'),
-    },
-    {
-      name: 'Recipes',
-      updated: new Date('1/17/16'),
-    },
-    {
-      name: 'Work',
-      updated: new Date('1/28/16'),
-    }
-  ];
-  notes: Section[] = [
-    {
-      name: 'Vacation Itinerary',
-      updated: new Date('2/20/16'),
-    },
-    {
-      name: 'Kitchen Remodel',
-      updated: new Date('1/18/16'),
-    }
-  ];
+  
+  
   constructor() { }
-
+  Watchs: WatchInfo[] = [
+    {
+      name: 'test1',
+      SL: 34,
+      sex: 'male',
+      photoURL: 'https://www.dangquangwatch.vn//upload/product/1237549702_dong-ho-chinh-hang-15.jpg'
+    },
+    {
+      name: 'test2',
+      SL: 35,
+      sex: 'female',
+      photoURL: 'https://www.dangquangwatch.vn//upload/product/1237549702_dong-ho-chinh-hang-15.jpg'
+    },
+    {
+      name: 'test3',
+      SL: 36,
+      sex: 'male',
+      photoURL: 'https://www.dangquangwatch.vn//upload/product/1237549702_dong-ho-chinh-hang-15.jpg'
+    }
+  ]
+  testclick(index)
+  {
+    //console.log(index)
+    this.Watchs.splice(index,1);
+    //console.log(this.Watchs);
+  }
   ngOnInit(): void {
   }
 

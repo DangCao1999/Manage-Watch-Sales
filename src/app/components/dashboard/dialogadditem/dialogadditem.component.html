@@ -1,0 +1,38 @@
+<h1 mat-dialog-title>Add New Watch</h1>
+<div mat-dialog-content >
+    <form id="mat-dialog-content" [formGroup]="options">
+        <mat-form-field style="width: 20vw" appearance="outline">
+            <mat-label>Name</mat-label>
+            <input formControlName="name"   matInput placeholder="Name Watch">
+        </mat-form-field>
+        <div style="display: flex; justify-content: space-between;">
+            <mat-form-field style="width: 9vw" appearance="outline">
+                <mat-label>Amount</mat-label>
+                <input formControlName="amount"   matInput type="number" min="1" placeholder="Amount">
+            </mat-form-field>
+
+            <mat-form-field style="width: 9vw" appearance="outline">
+                <mat-label>Sex</mat-label>
+                <mat-select formControlName="sex" >
+                    <mat-option value="male">Male</mat-option>
+                    <mat-option value="female">Female</mat-option>
+                    <mat-option value="female">Both</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+
+        </div>
+        <mat-form-field appearance="outline">
+            <mat-label>Price</mat-label>
+            <input formControlName="price"  matInput type="number" min="1" placeholder="Price">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Photo URL</mat-label>
+            <input formControlName="photo"  matInput type="url" placeholder="Photo URL">
+        </mat-form-field>
+    </form>
+</div>
+<div mat-dialog-actions style="display: flex; justify-content: flex-end">
+    <button mat-stroked-button class="button-confirm" (click)="cancelClick()">Cancel</button>
+    <button mat-stroked-button style="background-color:limegreen; color: white;" class="button-confirm" (click)="addclick()">Add</button>
+</div>

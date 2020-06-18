@@ -13,6 +13,9 @@ import {MatListModule} from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatDialogModule} from '@angular/material/dialog';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatSelectModule} from '@angular/material/select';
 
 import { LoginComponent } from './components/login/login.component';
 import { Routes, RouterModule } from '@angular/router';
@@ -26,6 +29,10 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 import { ListitemComponent } from './components/dashboard/listitem/listitem.component';
 import { SideNavComponent } from './components/side-nav/side-nav.component';
+import { DialogadditemComponent } from './components/dashboard/dialogadditem/dialogadditem.component';
+import { from } from 'rxjs';
+import { DialogdeleteitemComponent } from './components/dashboard/dialogdeleteitem/dialogdeleteitem.component';
+
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
@@ -39,9 +46,15 @@ const routes: Routes = [
     LoginComponent,
     ChartLineComponent,
     ListitemComponent,
-    SideNavComponent
+    SideNavComponent,
+    DialogadditemComponent,
+    DialogdeleteitemComponent
   ],
   imports: [
+    MatSelectModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatDialogModule,
     MatMenuModule,
     MatToolbarModule,
     MatIconModule,

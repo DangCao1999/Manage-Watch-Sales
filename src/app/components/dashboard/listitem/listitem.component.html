@@ -1,17 +1,41 @@
 <div id="div-mat-list">
-<mat-list>
-    <div mat-subheader>Folders</div>
+  <mat-list>
+    <!-- <div mat-subheader>Total</div> -->
+    <mat-list-item *ngFor="let watch of Watchs; let i = index">
+
+      <img matListAvatar src={{watch.photoURL}}
+        alt="">
+      <p matLine>{{watch.name}}</p>
+      <p class="content-list-item-unit">34</p>
+      <i class="content-list-item">unit </i>
+      <p class="content-list-item">Male</p>
+      <p class="content-list-item-unit">12.000.000</p>
+      <i class="content-list-item">vnd/unit</i>
+
+
+
+
+      <button mat-icon-button style="color: #21bf73;">
+        <mat-icon>create</mat-icon>
+      </button>
+      <button (click) = "testclick(i)" mat-icon-button>
+        <mat-icon style="color: #d92027;">delete</mat-icon>
+      </button>
+
+    </mat-list-item>
+
+
+    <!-- <div mat-subheader>Folders</div>
     <mat-list-item *ngFor="let folder of folders">
       <mat-icon mat-list-icon>folder</mat-icon>
       <div mat-line>{{folder.name}}</div>
-      <div mat-line> {{folder.updated | date}} </div>
     </mat-list-item>
     <mat-divider></mat-divider>
     <div mat-subheader>Notes</div>
     <mat-list-item *ngFor="let note of notes">
       <mat-icon mat-list-icon>note</mat-icon>
       <div mat-line>{{note.name}}</div>
-      <div mat-line> {{note.updated | date}} </div>
-    </mat-list-item>
+     
+    </mat-list-item> -->
   </mat-list>
 </div>
