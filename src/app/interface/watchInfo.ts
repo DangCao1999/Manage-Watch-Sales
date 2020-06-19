@@ -3,4 +3,5 @@ export interface WatchInfo{
     SL: number;
     photoURL: string;
     sex: string;
+    price: number
 }

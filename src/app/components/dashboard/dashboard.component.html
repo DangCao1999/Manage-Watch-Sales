@@ -2,6 +2,9 @@
 </app-side-nav>
 <div style="width: 70vw; margin: 0 auto;">
     <div class="button-new-item">
+        <button (click)= "this.watch_service.postWatchs()">
+            testapi
+        </button>
         <button (click) = "openDialog()" style="background-color: #fdd03b;" mat-stroked-button>
             <mat-icon  fontSet="material-icons-outlined">
                 add_to_photos
