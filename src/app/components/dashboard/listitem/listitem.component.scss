@@ -2,6 +2,12 @@
     color: rgba(0, 0, 0, 0.54);
   }
 
+.contain-table{
+  justify-content: center;
+}
+.contain-table-name{
+  flex-basis: 10%;
+}
 #div-mat-list{
     //border: 1px solid rgb(200, 200, 200);
     border-radius: 5px;
@@ -16,4 +22,8 @@
 .content-list-item-unit
 {
   margin-right: 5px;
+}
+
+td{
+  text-align: center;
 }

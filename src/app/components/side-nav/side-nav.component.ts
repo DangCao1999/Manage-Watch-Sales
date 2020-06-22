@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsergoogleService } from 'src/app/service/usergoogle.service';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogadduserComponent } from './dialogadduser/dialogadduser.component';
 
 @Component({
   selector: 'app-side-nav',
@@ -8,8 +10,13 @@ import { UsergoogleService } from 'src/app/service/usergoogle.service';
 })
 export class SideNavComponent implements OnInit {
 
-  constructor(public userService: UsergoogleService) { }
+  constructor(public dialog: MatDialog,public userService: UsergoogleService) { }
   ngOnInit(): void {
+    //console.log(this.userService.);
   }
-
+  clickadduser(){
+      this.dialog.open(
+        DialogadduserComponent
+      )
+  }
 }

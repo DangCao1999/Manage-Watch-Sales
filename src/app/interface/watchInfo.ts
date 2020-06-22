@@ -1,7 +1,8 @@
 export interface WatchInfo{
+    id ?: string,
     name: string;
-    SL: number;
+    amount: number;
     photoURL: string;
     sex: string;
-    price: number
+    price: string
 }

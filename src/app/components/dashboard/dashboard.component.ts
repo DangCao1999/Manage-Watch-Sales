@@ -3,10 +3,6 @@ import { UsergoogleService } from 'src/app/service/usergoogle.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogadditemComponent } from './dialogadditem/dialogadditem.component';
 import { WatchsService } from 'src/app/service/watchs.service';
-export interface Section {
-  name: string;
-  updated: Date;
-}
 
 @Component({
   selector: 'app-dashboard',
@@ -18,6 +14,7 @@ export class DashboardComponent implements OnInit {
   constructor(public user_service: UsergoogleService, public dialog: MatDialog, public watch_service: WatchsService) { }
 
   ngOnInit(): void {
+    
   }
 
   openDialog(): void {

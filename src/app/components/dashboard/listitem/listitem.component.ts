@@ -1,6 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, Input } from '@angular/core';
 import { WatchInfo } from 'src/app/interface/watchInfo';
 import { MaxLengthValidator } from '@angular/forms';
+import { WatchsService } from 'src/app/service/watchs.service';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogdeleteitemComponent } from '../dialogdeleteitem/dialogdeleteitem.component';
+import { Router } from '@angular/router';
+import { state } from '@angular/animations';
 
 
 @Component({
@@ -9,36 +14,27 @@ import { MaxLengthValidator } from '@angular/forms';
   styleUrls: ['./listitem.component.scss']
 })
 export class ListitemComponent implements OnInit {
+  displayedColumns: string[] = ['Image','Name', 'Amount', 'Sex', 'Price (VND)','Action'];
+  //dataSource: WatchInfo[] = this.watch_service.dataWatch;
+  constructor(private router: Router,public watch_service: WatchsService, public dialog: MatDialog) {}
   
-  
-  constructor() { }
-  Watchs: WatchInfo[] = [
-    {
-      name: 'test1',
-      SL: 34,
-      sex: 'male',
-      photoURL: 'https://www.dangquangwatch.vn//upload/product/1237549702_dong-ho-chinh-hang-15.jpg'
-    },
-    {
-      name: 'test2',
-      SL: 35,
-      sex: 'female',
-      photoURL: 'https://www.dangquangwatch.vn//upload/product/1237549702_dong-ho-chinh-hang-15.jpg'
-    },
-    {
-      name: 'test3',
-      SL: 36,
-      sex: 'male',
-      photoURL: 'https://www.dangquangwatch.vn//upload/product/1237549702_dong-ho-chinh-hang-15.jpg'
-    }
-  ]
   testclick(index)
   {
     //console.log(index)
-    this.Watchs.splice(index,1);
+    //this.Watchs.splice(index,1);
     //console.log(this.Watchs);
   }
-  ngOnInit(): void {
+  modifyclick(item: WatchInfo)
+  {
+    this.router.navigate(['/watch/'+item.id], {state: item})
   }
-
+  deleteclick(watch)
+  {
+    this.dialog.open(DialogdeleteitemComponent, {data: watch})
+  }
+  ngOnInit(): void {
+    console.log(this.watch_service.dataWatch)
+    //console.log(this.watch_service.dataWatch)
+    //this.watch_service.getWatchs();
+  }
 }

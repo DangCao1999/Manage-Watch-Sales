@@ -1,0 +1,27 @@
+
+<h1 mat-dialog-title>Add New User</h1>
+<div mat-dialog-content >
+    <form id="mat-dialog-content" [formGroup]="options" style="display: flex; flex-direction: column;">
+        <mat-form-field style="width: 20vw" appearance="outline">
+            <mat-label>Name</mat-label>
+            <input formControlName="name"   matInput placeholder="Name">
+        </mat-form-field>   
+        <mat-form-field style="width: 20vw" appearance="outline">
+            <mat-label>Email</mat-label>
+            <input formControlName="email" matInput >
+        </mat-form-field>
+        <mat-form-field style="width: 20vw" appearance="outline">
+            <mat-label>PassWord</mat-label>
+            <input formControlName="pass1" type="password"    matInput >
+        </mat-form-field>
+        <mat-form-field style="width: 20vw" appearance="outline">
+            <mat-label>Confirm PassWord</mat-label>
+            <input formControlName="pass2" type="password"   matInput>
+        </mat-form-field>    
+    </form>
+    
+</div>
+<div mat-dialog-actions style="display: flex; justify-content: flex-end">
+    <button mat-stroked-button class="button-confirm" (click)="cancelClick()">Cancel</button>
+    <button mat-stroked-button style="background-color:limegreen; color: white;" class="button-confirm" (click)="addClick()">Add</button>
+</div>

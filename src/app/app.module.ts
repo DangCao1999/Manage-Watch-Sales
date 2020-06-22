@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-
+import { NgxImageZoomModule } from 'ngx-image-zoom';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +16,11 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatDialogModule} from '@angular/material/dialog';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
+import {MatTableModule} from '@angular/material/table';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+
+
+
 
 import { LoginComponent } from './components/login/login.component';
 import { Routes, RouterModule } from '@angular/router';
@@ -32,12 +37,16 @@ import { SideNavComponent } from './components/side-nav/side-nav.component';
 import { DialogadditemComponent } from './components/dashboard/dialogadditem/dialogadditem.component';
 import { from } from 'rxjs';
 import { DialogdeleteitemComponent } from './components/dashboard/dialogdeleteitem/dialogdeleteitem.component';
+import { WatchvidComponent } from './components/watchvid/watchvid.component';
+import { DialogadduserComponent } from './components/side-nav/dialogadduser/dialogadduser.component';
+
 
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
   {path: 'login', component: LoginComponent},
   {path: 'dashboard', component: DashboardComponent},
+  {path: "watch/:id", component: WatchvidComponent}
 ];
 @NgModule({
   declarations: [
@@ -48,9 +57,13 @@ const routes: Routes = [
     ListitemComponent,
     SideNavComponent,
     DialogadditemComponent,
-    DialogdeleteitemComponent
+    DialogdeleteitemComponent,
+    WatchvidComponent,
+    DialogadduserComponent,
   ],
   imports: [
+    MatSnackBarModule,
+    MatTableModule,
     MatSelectModule,
     FormsModule,
     ReactiveFormsModule,
@@ -69,7 +82,8 @@ const routes: Routes = [
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxImageZoomModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

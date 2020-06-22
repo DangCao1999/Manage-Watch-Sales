@@ -3,13 +3,17 @@
   Delete watch is:
   <ul>
     <li>
-      <span>&#10003;</span> ĐỒNG HỒ JACQUES LEMANS JL-1-1654.2ZD
+       {{data.name}}
     </li>
     <li>
-      <span >&#10003;</span> 34 unit
+       {{data.amount}} unit
     </li>
     <li>
-      <span>&#10003;</span> 12.000.000 vnd
+       {{data.price}} vnd
     </li>
   </ul>
+</div>
+<div style = "display: flex; justify-content: flex-end;" mat-dialog-actions>
+  <button (click)="cancelclick()" mat-button >Cancel</button>
+  <button (click)="deleteclick()" style="color: red;" mat-button >Delete</button>
 </div>

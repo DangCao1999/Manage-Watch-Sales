@@ -1,0 +1,53 @@
+
+<app-side-nav>
+</app-side-nav>
+<div style="width: 50vw;" class="div-card">
+    <div style="float: left; margin-right: 8vw; padding-left: 3vw;">
+        <lib-ngx-image-zoom [thumbImage]=myThumbnail [fullImage]=myFullresImage [magnification]="2"
+            [enableScrollZoom]="true" [enableLens]="true" [lensWidth]="100" [circularLens]="true">
+
+        </lib-ngx-image-zoom>
+    </div>
+    <div style="float: left; display: flex; flex-direction: column; ">
+        <h2>Modify Watch</h2>
+        <form id="mat-dialog-content" [formGroup]="options">
+            <mat-form-field style="width: 20vw" appearance="outline">
+                <mat-label>Name</mat-label>
+                <input formControlName="name" matInput placeholder="Name Watch">
+            </mat-form-field>
+            <div style="display: flex; justify-content: space-between;">
+                <mat-form-field style="width: 9vw;;" appearance="outline">
+                    <mat-label>Amount</mat-label>
+                    <input formControlName="amount" matInput type="number" min="1" placeholder="Amount">
+                </mat-form-field>
+
+                <mat-form-field style="width: 9vw" appearance="outline">
+                    <mat-label>Sex</mat-label>
+                    <mat-select formControlName="sex">
+                        <mat-option value="male">Male</mat-option>
+                        <mat-option value="female">Female</mat-option>
+                        <mat-option value="female">Both</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+
+            </div>
+            <mat-form-field appearance="outline">
+                <mat-label>Price</mat-label>
+                <input formControlName="price" matInput type="text" min="1" placeholder="Price">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Photo URL</mat-label>
+                <input formControlName="photoURL" matInput type="url" placeholder="Photo URL">
+            </mat-form-field>
+        </form>
+        <div style="display: flex; justify-content: flex-end;">
+            <button (click) ="cancelclick()" mat-stroked-button class="button-confirm" >Cancel</button>
+            <button (click)="saveclick()" mat-stroked-button style="background-color:#086972; color: white; margin-left: 10px;" class="button-confirm"
+                >Save</button>
+        </div>
+    </div>
+    <div style="clear: both;">
+
+    </div>
+</div>
