@@ -35,18 +35,17 @@ import { environment } from '../environments/environment';
 import { ListitemComponent } from './components/dashboard/listitem/listitem.component';
 import { SideNavComponent } from './components/side-nav/side-nav.component';
 import { DialogadditemComponent } from './components/dashboard/dialogadditem/dialogadditem.component';
-import { from } from 'rxjs';
 import { DialogdeleteitemComponent } from './components/dashboard/dialogdeleteitem/dialogdeleteitem.component';
 import { WatchvidComponent } from './components/watchvid/watchvid.component';
 import { DialogadduserComponent } from './components/side-nav/dialogadduser/dialogadduser.component';
-
-
+import { LoginGuard } from './guard/loginguard';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'dashboard', component: DashboardComponent},
-  {path: "watch/:id", component: WatchvidComponent}
+  {path: 'dashboard', component: DashboardComponent, canActivate: [LoginGuard]},
+  {path: "watch/:id", component: WatchvidComponent, canActivate: [LoginGuard]}
 ];
 @NgModule({
   declarations: [
@@ -62,6 +61,7 @@ const routes: Routes = [
     DialogadduserComponent,
   ],
   imports: [
+    MatProgressBarModule,
     MatSnackBarModule,
     MatTableModule,
     MatSelectModule,
@@ -85,7 +85,7 @@ const routes: Routes = [
     HttpClientModule,
     NgxImageZoomModule,
   ],
-  providers: [],
+  providers: [LoginGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
