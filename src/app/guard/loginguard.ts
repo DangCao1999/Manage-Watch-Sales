@@ -1,21 +1,27 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from "@angular/router";
 import { UsergoogleService } from '../service/usergoogle.service';
+import { AngularFireAuthModule, AngularFireAuth } from '@angular/fire/auth';
 @Injectable()
 export class LoginGuard implements CanActivate {
 
-    constructor(private router: Router,private user_service: UsergoogleService) { }
+    constructor(public afauth: AngularFireAuth, public router: Router, public user_service: UsergoogleService) { }
 
 
-    canActivate() {
-        if (this.user_service.logged) {
-            return true;
-        }
-        else {
-            window.alert("You don't have permission to view this page"); (4)
-            this.router.navigate(['login'])
-            return false;
+   async canActivate() {
+        //console.log(this.user_service.logged);
+        //await this.user_service.getUserGG();
+        await this.afauth.onAuthStateChanged((user) => {
+            if (user) {
+                return true;
+            }
+            else {
+                window.alert("You don't have permission to view this page"); (4)
+                this.router.navigate(['login'])
+                return false;
+            }
+        });
+        return true;
 
-        }
     }
 }

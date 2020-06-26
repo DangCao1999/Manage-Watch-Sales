@@ -40,6 +40,7 @@ import { WatchvidComponent } from './components/watchvid/watchvid.component';
 import { DialogadduserComponent } from './components/side-nav/dialogadduser/dialogadduser.component';
 import { LoginGuard } from './guard/loginguard';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { UsergoogleService } from './service/usergoogle.service';
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
@@ -85,7 +86,7 @@ const routes: Routes = [
     HttpClientModule,
     NgxImageZoomModule,
   ],
-  providers: [LoginGuard],
+  providers: [UsergoogleService, LoginGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
