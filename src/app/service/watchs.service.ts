@@ -11,7 +11,7 @@ export class WatchsService {
   dataWatch: WatchInfo[] = [
     // {name: 'hello', sex: "male", photoURL: "ass", price: "123", amount: 12}
   ]
-  private endpoint = "http://localhost:8080/watch";
+  private endpoint = "https://radiant-anchorage-76186.herokuapp.com/watch";
   constructor(private _snackBar: MatSnackBar, private httpClient: HttpClient, public fb: AngularFirestore) {
     this.getWatchs();
   }

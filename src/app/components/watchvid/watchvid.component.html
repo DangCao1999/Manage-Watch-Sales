@@ -1,7 +1,7 @@
 
 <app-side-nav>
 </app-side-nav>
-<div style="width: 50vw;" class="div-card">
+<div style="width: 70vw;" class="div-card">
     <div style="float: left; margin-right: 8vw; padding-left: 3vw;">
         <lib-ngx-image-zoom [thumbImage]=myThumbnail [fullImage]=myFullresImage [magnification]="2"
             [enableScrollZoom]="true" [enableLens]="true" [lensWidth]="100" [circularLens]="true">
@@ -11,17 +11,17 @@
     <div style="float: left; display: flex; flex-direction: column; ">
         <h2>Modify Watch</h2>
         <form id="mat-dialog-content" [formGroup]="options">
-            <mat-form-field style="width: 20vw" appearance="outline">
+            <mat-form-field style="width: 30vw" appearance="outline">
                 <mat-label>Name</mat-label>
                 <input formControlName="name" matInput placeholder="Name Watch">
             </mat-form-field>
             <div style="display: flex; justify-content: space-between;">
-                <mat-form-field style="width: 9vw;;" appearance="outline">
+                <mat-form-field style="width: 14vw;;" appearance="outline">
                     <mat-label>Amount</mat-label>
                     <input formControlName="amount" matInput type="number" min="1" placeholder="Amount">
                 </mat-form-field>
 
-                <mat-form-field style="width: 9vw" appearance="outline">
+                <mat-form-field style="width: 14vw" appearance="outline">
                     <mat-label>Sex</mat-label>
                     <mat-select formControlName="sex">
                         <mat-option value="male">Male</mat-option>
