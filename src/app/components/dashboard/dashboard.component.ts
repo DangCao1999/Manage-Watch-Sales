@@ -16,7 +16,14 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     
   }
-
+  search(event){
+    let value_input = event.target.value;
+    console.log(value_input);
+    this.watch_service.search(value_input);
+  }
+  cancel(){
+    this.watch_service.cancelsearch();
+  }
   openDialog(): void {
     const dialogRef = this.dialog.open(
       DialogadditemComponent

@@ -6,10 +6,9 @@
             *ngIf="this.userService.user.avatarURL != null">
             <img class="userLoggedin" [src]="this.userService.user.avatarURL" alt="" />
         </button>
-
         <button mat-button [matMenuTriggerFor]="appMenu" id="btnPhoto" style="height: 50px; width: 50px; outline: none;"
             *ngIf="this.userService.user.avatarURL == null">
-            <img class="userLoggedin" src=".././assets/avatarDefault.png" alt="" />
+            <img class="userLoggedin" src="../../../assets/user.png" alt="" />
         </button>
         <mat-menu #appMenu="matMenu">
             <div style="padding: 10px 20px">
@@ -18,6 +17,7 @@
                     <p style="text-align:center; word-wrap: break-word;">
                         {{ userService.user.email }}</p>
                 </div>
+                <button (click)="clickadduser()" mat-menu-item style="text-align: center;">Add User</button>
                 <button (click)="clickadduser()" mat-menu-item style="text-align: center;">Add User</button>
                 <button mat-menu-item style="text-align: center;" (click) = "userService.signOut()">Logout</button>
             </div>

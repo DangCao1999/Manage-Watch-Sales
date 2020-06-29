@@ -11,19 +11,28 @@ export class UsergoogleService {
   user: User;
   _userGG: any;
   logged = false;
-
+  firebaseauthstate = null;
   constructor(private _snackBar: MatSnackBar, private _afAuth: AngularFireAuth, private _router: Router,) {
-    this._afAuth.user.subscribe(usr => {
+  
+    this._afAuth.authState.subscribe((value)=>{
+      this.firebaseauthstate = value;
+      this.getUserGG();
+    })
+    
+  }
+  get getauthenticated(): boolean{
+    return this.firebaseauthstate !== null;
+  }
+  async getUserGG() {
+    await this._afAuth.user.subscribe(usr => {
+      console.log(usr);
       if (usr != null) {
         this._userGG = usr;
         this.logged = true;
         this.setUser();
       } else { this.logged = false; }
     });
-
   }
-
-
   setUser() {
     this.user = {
       uid: this._userGG.uid,
@@ -36,17 +45,17 @@ export class UsergoogleService {
     console.log(user_new)
     let tempUser = this._userGG;
     let provider = await this._afAuth.createUserWithEmailAndPassword(user_new.email, String(pass)).then((res) => {
-       res.user.updateProfile({displayName: user_new.name}).then(()=>{
-      this.loginGoogle().then(()=>{
-        this.openSnackBar("Successful Add User");
-      }).catch(()=>{
-        this._router.navigate(['login'])
-      }); 
-      //    console.log(this.user);
-      //    console.log(this._userGG);
-        })
-      
-     
+      res.user.updateProfile({ displayName: user_new.name }).then(() => {
+        this.loginGoogle().then(() => {
+          this.openSnackBar("Successful Add User");
+        }).catch(() => {
+          this._router.navigate(['login'])
+        });
+        //    console.log(this.user);
+        //    console.log(this._userGG);
+      })
+
+
     }).catch(() => {
       this.openSnackBar("Something Wrong :(");
     });
@@ -57,7 +66,7 @@ export class UsergoogleService {
     let user = await this._afAuth.signInWithEmailAndPassword(email, pass).then(res => {
       this.openSnackBar("Successfully Logged In!")
       this._router.navigate(['dashboard']);
-      
+
       // this.showMessage("success", "Successfully Logged In!");
       // this.isUserLoggedIn();
     }, err => {
@@ -75,6 +84,7 @@ export class UsergoogleService {
 
   signOut() {
     this._afAuth.signOut().then(() => {
+      this.firebaseauthstate == null;
       this.user = null;
       this._userGG = null;
       this._router.navigate(["/"]);

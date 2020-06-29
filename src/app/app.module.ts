@@ -35,19 +35,16 @@ import { environment } from '../environments/environment';
 import { ListitemComponent } from './components/dashboard/listitem/listitem.component';
 import { SideNavComponent } from './components/side-nav/side-nav.component';
 import { DialogadditemComponent } from './components/dashboard/dialogadditem/dialogadditem.component';
-import { from } from 'rxjs';
 import { DialogdeleteitemComponent } from './components/dashboard/dialogdeleteitem/dialogdeleteitem.component';
 import { WatchvidComponent } from './components/watchvid/watchvid.component';
 import { DialogadduserComponent } from './components/side-nav/dialogadduser/dialogadduser.component';
 
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { UsergoogleService } from './service/usergoogle.service';
+import { AuthGuard } from './guard/auth.guard';
 
 
-const routes: Routes = [
-  {path: '', component: LoginComponent},
-  {path: 'login', component: LoginComponent},
-  {path: 'dashboard', component: DashboardComponent},
-  {path: "watch/:id", component: WatchvidComponent}
-];
+
 @NgModule({
   declarations: [
     DashboardComponent,
@@ -62,6 +59,7 @@ const routes: Routes = [
     DialogadduserComponent,
   ],
   imports: [
+    MatProgressBarModule,
     MatSnackBarModule,
     MatTableModule,
     MatSelectModule,
@@ -72,7 +70,7 @@ const routes: Routes = [
     MatToolbarModule,
     MatIconModule,
     MatListModule,
-    RouterModule.forRoot(routes),
+  
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -84,8 +82,9 @@ const routes: Routes = [
     AngularFireAuthModule,
     HttpClientModule,
     NgxImageZoomModule,
+    
   ],
-  providers: [],
+  providers: [AuthGuard, UsergoogleService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

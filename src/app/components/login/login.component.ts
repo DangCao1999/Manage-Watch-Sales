@@ -19,6 +19,9 @@ export class LoginComponent implements OnInit {
 
     return this.email.hasError('email') ? 'Not a valid email' : '';
   }
+  getPassError(){
+    if(this.pass.hasError('required')) return 'You must enter a value'
+  }
   ngOnInit(): void {
   }
   loginwithEmailPass()

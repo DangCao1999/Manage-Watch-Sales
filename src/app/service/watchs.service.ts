@@ -8,9 +8,11 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   providedIn: 'root'
 })
 export class WatchsService {
+  busy: boolean;
   dataWatch: WatchInfo[] = [
     // {name: 'hello', sex: "male", photoURL: "ass", price: "123", amount: 12}
   ]
+  dataWatch_temp: WatchInfo[] = []
   private endpoint = "https://radiant-anchorage-76186.herokuapp.com/watch";
   constructor(private _snackBar: MatSnackBar, private httpClient: HttpClient, public fb: AngularFirestore) {
     this.getWatchs();
@@ -46,7 +48,24 @@ export class WatchsService {
       this.openSnackBar(res['mess'])
     })
   }
+  search(keyword) {
+    this.dataWatch_temp = this.dataWatch;
+    this.dataWatch = [];
+    this.dataWatch_temp.forEach((value) => {
+      let n = value.name.search(keyword);
+      if (n > 0) {
+        this.dataWatch.push(value);
+      }
+    })
+  }
 
+  cancelsearch() {
+    if (this.dataWatch_temp.length != 0) {
+      this.dataWatch = this.dataWatch_temp;
+      this.dataWatch_temp = [];
+    }
+
+  }
   openSnackBar(mess) {
     this._snackBar.open(mess, "OK", {
       duration: 4000,

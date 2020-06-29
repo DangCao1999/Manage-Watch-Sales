@@ -11,8 +11,8 @@ import { Router } from '@angular/router';
 })
 export class WatchvidComponent implements OnInit {
   options: FormGroup;
-  myThumbnail = "https://www.dangquangwatch.vn//upload/product/506095486_dong-ho-chinh-hang-27.jpg";
-  myFullresImage = "https://www.dangquangwatch.vn//upload/product/506095486_dong-ho-chinh-hang-27.jpg";
+  myThumbnail = "";
+  myFullresImage = "";
   zoommode = "hover";
   watch: WatchInfo;
   constructor(private router: Router, private fb: FormBuilder, private watch_service: WatchsService) {
@@ -24,6 +24,8 @@ export class WatchvidComponent implements OnInit {
       price: this.watch.price,
       photoURL: this.watch.photoURL,
     });
+    this.myFullresImage = this.watch.photoURL;
+    this.myThumbnail = this.watch.photoURL;
    }
  
   ngOnInit(): void {
