@@ -11,11 +11,18 @@ export class UsergoogleService {
   user: User;
   _userGG: any;
   logged = false;
-
+  firebaseauthstate = null;
   constructor(private _snackBar: MatSnackBar, private _afAuth: AngularFireAuth, private _router: Router,) {
-    this.getUserGG();
+  
+    this._afAuth.authState.subscribe((value)=>{
+      this.firebaseauthstate = value;
+      this.getUserGG();
+    })
+    
   }
-
+  get getauthenticated(): boolean{
+    return this.firebaseauthstate !== null;
+  }
   async getUserGG() {
     await this._afAuth.user.subscribe(usr => {
       console.log(usr);
@@ -77,6 +84,7 @@ export class UsergoogleService {
 
   signOut() {
     this._afAuth.signOut().then(() => {
+      this.firebaseauthstate == null;
       this.user = null;
       this._userGG = null;
       this._router.navigate(["/"]);
