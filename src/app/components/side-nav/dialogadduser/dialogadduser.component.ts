@@ -43,7 +43,7 @@ export class DialogadduserComponent implements OnInit {
       email: this.options.value.email,
       avatarURL: "",
     }
-    this.user_service.addNewUser(user_new, this.options.value.pass);
+    this.user_service.addNewUser(user_new, this.options.value.pass1);
     this.dialog.closeAll();
   }
 

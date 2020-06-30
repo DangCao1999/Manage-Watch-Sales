@@ -1,13 +1,13 @@
-
 <app-side-nav>
 </app-side-nav>
 <div style="width: 70vw; margin: 0 auto;">
     <div class="button-new-item">
-        <!-- <button (click)= "this.watch_service.checkWatchs()">
-            testapi
-        </button> -->
-        <button (click) = "openDialog()" style="background-color: #fdd03b;" mat-stroked-button>
-            <mat-icon  fontSet="material-icons-outlined">
+        <div>
+            <input (keydown.enter) = "search($event)" type="text" (focusout) = "cancel()" placeholder="Search with name" style="width: 45vw; height: 5vh; ">
+        </div>
+       
+        <button (click)="openDialog()" style="background-color: #fdd03b;" mat-stroked-button>
+            <mat-icon fontSet="material-icons-outlined">
                 add_to_photos
             </mat-icon>
             New Watch

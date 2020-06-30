@@ -99,6 +99,11 @@
         <td>
           {{item.price}}
         </td>
+        
+        <td [ngStyle] = "{'color': getcolor(item.amount)}">
+          <mat-icon>radio_button_checked</mat-icon>
+
+        </td>
         <td>
           <button (click)="modifyclick(item)" mat-icon-button style="color: #21bf73;">
             <mat-icon>create</mat-icon>

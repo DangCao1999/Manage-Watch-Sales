@@ -38,16 +38,13 @@ import { DialogadditemComponent } from './components/dashboard/dialogadditem/dia
 import { DialogdeleteitemComponent } from './components/dashboard/dialogdeleteitem/dialogdeleteitem.component';
 import { WatchvidComponent } from './components/watchvid/watchvid.component';
 import { DialogadduserComponent } from './components/side-nav/dialogadduser/dialogadduser.component';
-import { LoginGuard } from './guard/loginguard';
+
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { UsergoogleService } from './service/usergoogle.service';
+import { AuthGuard } from './guard/auth.guard';
 
-const routes: Routes = [
-  {path: '', component: LoginComponent},
-  {path: 'login', component: LoginComponent},
-  {path: 'dashboard', component: DashboardComponent, canActivate: [LoginGuard]},
-  {path: "watch/:id", component: WatchvidComponent, canActivate: [LoginGuard]}
-];
+
+
 @NgModule({
   declarations: [
     DashboardComponent,
@@ -73,7 +70,7 @@ const routes: Routes = [
     MatToolbarModule,
     MatIconModule,
     MatListModule,
-    RouterModule.forRoot(routes),
+  
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -85,8 +82,9 @@ const routes: Routes = [
     AngularFireAuthModule,
     HttpClientModule,
     NgxImageZoomModule,
+    
   ],
-  providers: [UsergoogleService, LoginGuard],
+  providers: [AuthGuard, UsergoogleService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

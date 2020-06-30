@@ -14,10 +14,23 @@ import { state } from '@angular/animations';
   styleUrls: ['./listitem.component.scss']
 })
 export class ListitemComponent implements OnInit {
-  displayedColumns: string[] = ['Image','Name', 'Amount', 'Sex', 'Price (VND)','Action'];
+  displayedColumns: string[] = ['Image','Name', 'Amount', 'Sex', 'Price (VND)','Status','Action'];
   //dataSource: WatchInfo[] = this.watch_service.dataWatch;
   constructor(private router: Router,public watch_service: WatchsService, public dialog: MatDialog) {}
-  
+  getcolor(number)
+  {
+    if(number >= 10)
+    {
+      return "rgb(50,193,121)";
+
+    }
+    else if(number >= 1)
+    {
+      return "rgb(255,171,26)";
+    }
+    return "rgb(252,96,104)";
+    
+  }
   testclick(index)
   {
     //console.log(index)
