@@ -5,11 +5,14 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { HttpClient } from '@angular/common/http';
+import { Observable, of } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
 export class UsergoogleService {
   user: User;
+  user$: Observable<User>;
   _userGG: any;
   logged = false;
   firebaseauthstate = null;
@@ -19,9 +22,25 @@ export class UsergoogleService {
     this._afAuth.authState.subscribe((value)=>{
       this.firebaseauthstate = value;
       this.getUserGG();
-    })
+    });
+
+    this.checkCurrentUser();
     
   }
+
+  checkCurrentUser() {
+    return this.user$ = this._afAuth.authState.pipe(
+      switchMap((user) => {
+        if (user) {
+          return 'true';
+        } else {
+          return of(null);
+        }
+      })
+    )
+  }
+
+
   get getauthenticated(): boolean{
     return this.firebaseauthstate !== null;
   }
